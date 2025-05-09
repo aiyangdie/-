@@ -1,0 +1,478 @@
+:root {
+    --primary: #ff3e7f;
+    --secondary: #7c4dff;
+    --accent: #00e5ff;
+    --fire: #ff4d4d;
+    --earth: #4caf50;
+    --air: #2196f3;
+    --water: #03a9f4;
+    --text-light: #ffffff;
+    --background-dark: #0a0a1a;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-hover: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--background-dark);
+    overflow-x: hidden;
+}
+
+/* 星空背景 */
+.stars, .twinkling, .meteors {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+}
+
+.stars {
+    background: #000 url('https://cdn.jsdelivr.net/gh/Gao-Haifei/CommunicationsArchitecture-web@main/images/stars.png') repeat;
+    animation: move-background 150s linear infinite;
+}
+
+.twinkling {
+    background: transparent url('https://cdn.jsdelivr.net/gh/Gao-Haifei/CommunicationsArchitecture-web@main/images/twinkling.png') repeat;
+    animation: move-background 100s linear infinite;
+    opacity: 0.5;
+}
+
+.meteors {
+    overflow: hidden;
+}
+
+@keyframes move-background {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 0; }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.header-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+main section {
+    margin-bottom: 3rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.section-icon {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.rule-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.rule {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rule:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.rule-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.rule h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.rule-details {
+    margin-top: 1rem;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.rule-details h4 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.3rem;
+}
+
+.rule-details ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+}
+
+.rule-details ul li {
+    margin-bottom: 0.3rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.rule-details ul li::before {
+    content: '•';
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.zodiac-category {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.zodiac-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.zodiac-card {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+}
+
+.zodiac-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.zodiac-card:hover::before {
+    transform: translateX(100%);
+}
+
+.zodiac-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background: var(--card-hover);
+}
+
+.fire .zodiac-card {
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.1), rgba(255, 62, 127, 0.1));
+    border: 2px solid var(--fire);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+}
+
+.fire .zodiac-card:hover {
+    box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.2), rgba(255, 62, 127, 0.2));
+}
+
+.fire .card-icon {
+    color: var(--fire);
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+}
+
+.fire .category-header {
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.2), rgba(255, 62, 127, 0.2));
+    border: 1px solid var(--fire);
+}
+
+.earth .zodiac-card {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(46, 125, 50, 0.1));
+    border: 2px solid var(--earth);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+}
+
+.earth .zodiac-card:hover {
+    box-shadow: 0 0 25px rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(46, 125, 50, 0.2));
+}
+
+.earth .card-icon {
+    color: var(--earth);
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.earth .category-header {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(46, 125, 50, 0.2));
+    border: 1px solid var(--earth);
+}
+
+.air .zodiac-card {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(3, 169, 244, 0.1));
+    border: 2px solid var(--air);
+    box-shadow: 0 0 15px rgba(33, 150, 243, 0.2);
+}
+
+.air .zodiac-card:hover {
+    box-shadow: 0 0 25px rgba(33, 150, 243, 0.4);
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(3, 169, 244, 0.2));
+}
+
+.air .card-icon {
+    color: var(--air);
+    text-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+.air .category-header {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(3, 169, 244, 0.2));
+    border: 1px solid var(--air);
+}
+
+.water .zodiac-card {
+    background: linear-gradient(135deg, rgba(3, 169, 244, 0.1), rgba(0, 229, 255, 0.1));
+    border: 2px solid var(--water);
+    box-shadow: 0 0 15px rgba(3, 169, 244, 0.2);
+}
+
+.water .zodiac-card:hover {
+    box-shadow: 0 0 25px rgba(3, 169, 244, 0.4);
+    background: linear-gradient(135deg, rgba(3, 169, 244, 0.2), rgba(0, 229, 255, 0.2));
+}
+
+.water .card-icon {
+    color: var(--water);
+    text-shadow: 0 0 10px rgba(3, 169, 244, 0.5);
+}
+
+.water .category-header {
+    background: linear-gradient(135deg, rgba(3, 169, 244, 0.2), rgba(0, 229, 255, 0.2));
+    border: 1px solid var(--water);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.zodiac-card:hover .card-icon {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--accent);
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.category-header:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.category-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 增强动画效果 */
+.zodiac-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+.zodiac-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.zodiac-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* 分类标题增强 */
+.category-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.category-header:hover h2 {
+    transform: scale(1.05);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.category-header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.category-header:hover p {
+    opacity: 1;
+}
+
+.detail-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.detail-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.detail-section:hover::before {
+    transform: translateX(100%);
+}
+
+.detail-section:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.detail-section h4 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.3rem;
+}
+
+/* 响应式布局优化 */
+@media (max-width: 1400px) {
+    .zodiac-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .zodiac-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .zodiac-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .zodiac-card {
+        min-height: 250px;
+    }
+    
+    .category-header h2 {
+        font-size: 1.8rem;
+    }
+} 
